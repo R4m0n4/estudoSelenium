@@ -4,8 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import javax.xml.xpath.XPath;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -25,7 +30,6 @@ public class TestesAmazon {
 	static PaginaProduto produto;
 	static MaisVendidos vendas;
 	static SoftAssert sa;
-	
 	
 	@Test
 	public void entrarPaginaProduto() {
@@ -48,7 +52,7 @@ public class TestesAmazon {
 	@Test
 	public void validarDepartamentos() {
 		home.clicarMaisVendidos();
-		List<WebElement> departamentos = vendas.getDepartamentos();
+		List<String> departamentos = vendas.getNomesDepartamentos();
 		
 		/*for (int i = 0; i < departamentos.size(); i++) {
 			
@@ -63,9 +67,11 @@ public class TestesAmazon {
 			driver.get("http:\\www.amazon.com.br");
 			home.clicarMaisVendidos();
 		}*/
-		for (WebElement departamento : departamentos) {
-			departamento.click();
-			driver.get("http:\\www.amazon.com.br");
+		
+		for (String departamento : departamentos) {
+						
+			vendas.clickDepartamentoByTitulo(departamento);
+			vendas.voltarParaHome();
 			home.clicarMaisVendidos();
 		}
 		
@@ -76,7 +82,12 @@ public class TestesAmazon {
 	@BeforeMethod
 	public void beforeMethod() {
 	
-		driver = new FirefoxDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("disable-infobars");
+		options.addArguments("--start-maximized");
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
+		driver = new ChromeDriver(options);
 		home = new HomeAmazon(driver);
 		busca = new ResultadoBusca(driver);
 		produto = new PaginaProduto(driver);

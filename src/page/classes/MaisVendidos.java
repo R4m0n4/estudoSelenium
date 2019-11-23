@@ -1,7 +1,9 @@
 package page.classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +24,8 @@ public class MaisVendidos {
 	
 	@FindBy (xpath="//ul[@id='zg_browseRoot']/ul/li")
 	private List<WebElement> qualquerDepartamento;
+	@FindBy (xpath="//a[@aria-label='Amazon.com.br']")
+	private WebElement logoAmazon;
 	
 	public String getTextoDepartamento(int indice) {
 		String textoDepartamento = qualquerDepartamento.get(indice).getText();
@@ -44,6 +48,24 @@ public class MaisVendidos {
 	
 	public List<WebElement> getDepartamentos(){
 		return qualquerDepartamento;
-		
 	}
+	
+	public List<String> getNomesDepartamentos(){
+		List<WebElement> departamentos = getDepartamentos();
+		List<String> titulos = new ArrayList<String>();
+		for (WebElement dep : departamentos) {
+			titulos.add(dep.getText());
+		}
+		return titulos;
+	}
+	
+	public void voltarParaHome() {
+		logoAmazon.click();
+	}
+	
+	public void clickDepartamentoByTitulo(String titulo) {
+		WebElement departamento = driver.findElement(By.xpath("//a[text()='" + titulo + "']"));
+		departamento.click();
+	}
+	
 }
