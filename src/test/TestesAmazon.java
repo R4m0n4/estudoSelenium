@@ -54,26 +54,23 @@ public class TestesAmazon {
 		home.clicarMaisVendidos();
 		List<String> departamentos = vendas.getNomesDepartamentos();
 		
-		/*for (int i = 0; i < departamentos.size(); i++) {
+		for (int i = 0; i < departamentos.size(); i++) {
 			
-			String texto = vendas.getTextoDepartamento(i);
-			System.out.println("Texto: " + texto);
-			try {Thread.sleep(5000);}catch(Exception e){}
-			vendas.clicarDepartamentos(i);
-			System.out.println("Clicou no departamento");
+			String departamento = departamentos.get(i);
+			vendas.clickDepartamentoByTitulo(departamento);
 			String titulo = vendas.getTituloDepartamento();
-			System.out.println("Título: " + titulo);
-			sa.assertEquals(texto,titulo);
-			driver.get("http:\\www.amazon.com.br");
+			sa.assertEquals(departamento, titulo);
+			vendas.voltarParaHome();
 			home.clicarMaisVendidos();
-		}*/
+			
+		}
 		
-		for (String departamento : departamentos) {
+		/*for (String departamento : departamentos) {
 						
 			vendas.clickDepartamentoByTitulo(departamento);
 			vendas.voltarParaHome();
 			home.clicarMaisVendidos();
-		}
+		}*/
 		
 		sa.assertAll();
 		

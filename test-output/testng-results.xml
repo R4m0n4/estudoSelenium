@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="2" total="3" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="192919" started-at="2019-11-23T20:37:00Z" finished-at="2019-11-23T20:40:13Z">
+  <suite name="Default suite" duration-ms="96965" started-at="2019-11-23T21:14:21Z" finished-at="2019-11-23T21:15:58Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="192919" started-at="2019-11-23T20:37:00Z" finished-at="2019-11-23T20:40:13Z">
+    <test name="Default test" duration-ms="96965" started-at="2019-11-23T21:14:21Z" finished-at="2019-11-23T21:15:58Z">
       <class name="test.TestesAmazon">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:test.TestesAmazon@9629756]" name="beforeMethod" is-config="true" duration-ms="12059" started-at="2019-11-23T17:37:00Z" finished-at="2019-11-23T17:37:12Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:test.TestesAmazon@2a5ca609]" name="beforeMethod" is-config="true" duration-ms="9250" started-at="2019-11-23T19:14:21Z" finished-at="2019-11-23T19:14:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validarDepartamentos()[pri:0, instance:test.TestesAmazon@9629756]" name="validarDepartamentos" duration-ms="178579" started-at="2019-11-23T17:37:12Z" finished-at="2019-11-23T17:40:11Z">
+        <test-method status="PASS" signature="validarDepartamentos()[pri:0, instance:test.TestesAmazon@2a5ca609]" name="validarDepartamentos" duration-ms="87553" started-at="2019-11-23T19:14:31Z" finished-at="2019-11-23T19:15:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validarDepartamentos -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:test.TestesAmazon@9629756]" name="afterMethod" is-config="true" duration-ms="2250" started-at="2019-11-23T17:40:11Z" finished-at="2019-11-23T17:40:13Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:test.TestesAmazon@2a5ca609]" name="afterMethod" is-config="true" duration-ms="128" started-at="2019-11-23T19:15:58Z" finished-at="2019-11-23T19:15:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
