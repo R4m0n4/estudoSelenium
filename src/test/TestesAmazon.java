@@ -87,6 +87,14 @@ public class TestesAmazon {
 	}
 	
 	
+	/*INHAÍ GURIZADA
+	 * 
+	 * COMOVAO.VOSES RSRSRS
+	 * 
+	 * OI SUMIDO
+	 */
+	
+	
 		
 	
 	
