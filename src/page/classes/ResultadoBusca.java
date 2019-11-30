@@ -27,6 +27,7 @@ public class ResultadoBusca {
 		for (WebElement titulo : listaTitulos)
 			 System.out.println(titulo.getText());
 	}
+	
 	public void clicarPrimeiroProduto() {
 		listaTitulos.get(0).click();
 	}

@@ -2,7 +2,9 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.xml.xpath.XPath;
 
@@ -18,6 +20,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import page.classes.HomeAmazon;
+import page.classes.LoginAmazon;
 import page.classes.PaginaProduto;
 import page.classes.ResultadoBusca;
 import page.classes.MaisVendidos;
@@ -30,6 +33,8 @@ public class TestesAmazon {
 	static PaginaProduto produto;
 	static MaisVendidos vendas;
 	static SoftAssert sa;
+	static LoginAmazon login;
+	
 	
 	@Test
 	public void entrarPaginaProduto() {
@@ -62,25 +67,35 @@ public class TestesAmazon {
 			sa.assertEquals(departamento, titulo);
 			vendas.voltarParaHome();
 			home.clicarMaisVendidos();
-			
 		}
+		sa.assertAll();
+	}
 		
-		/*for (String departamento : departamentos) {
-						
-			vendas.clickDepartamentoByTitulo(departamento);
-			vendas.voltarParaHome();
-			home.clicarMaisVendidos();
-		}*/
 		
+	@Test
+	public void aplicacativosDispositivos() throws InterruptedException {
+		home.irAteContasEListas();
+		String textoEncontrado= home.pegarTextoAplicativosDispositivo();
+		sa.assertEquals("Seus aplicativos e dispositivos", textoEncontrado);
+		home.clicarAplicativosDispositivo();
+		String textoLogin = login.pegarTextoLogin();
+		sa.assertEquals("Fazer login", textoLogin);
+		
+		Thread.sleep(3000);
 		sa.assertAll();
 		
 	}
+	
+	
+		
+	
 	
 	@BeforeMethod
 	public void beforeMethod() {
 	
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("disable-infobars");
+		options.setExperimentalOption("useAutomationExtension", false); 
+		options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 		options.addArguments("--start-maximized");
 		
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
@@ -90,12 +105,18 @@ public class TestesAmazon {
 		produto = new PaginaProduto(driver);
 		vendas = new MaisVendidos(driver);
 		sa = new SoftAssert();
+		login = new LoginAmazon(driver);
 		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http:\\www.amazon.com.br");
 	}
 	
-	@AfterMethod
+@AfterMethod
 	public void afterMethod() {
 		driver.close();
 	}
+
+	
+	
+	
 }

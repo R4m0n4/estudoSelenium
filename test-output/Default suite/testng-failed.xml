@@ -6,7 +6,7 @@
       <class name="test.TestesAmazon">
         <methods>
           <include name="beforeMethod"/>
-          <include name="validarDepartamentos"/>
+          <include name="aplicacativosDispositivos"/>
           <include name="afterMethod"/>
         </methods>
       </class> <!-- test.TestesAmazon -->
