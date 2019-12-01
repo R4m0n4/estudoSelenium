@@ -23,7 +23,9 @@ import page.classes.HomeAmazon;
 import page.classes.LoginAmazon;
 import page.classes.PaginaProduto;
 import page.classes.ResultadoBusca;
+import page.classes.Utils;
 import page.classes.MaisVendidos;
+
 
 public class TestesAmazon {
 	
@@ -34,7 +36,8 @@ public class TestesAmazon {
 	static MaisVendidos vendas;
 	static SoftAssert sa;
 	static LoginAmazon login;
-	
+	static Utils util;
+	String root = "C:/screenshots/";
 	
 	@Test
 	public void entrarPaginaProduto() {
@@ -49,7 +52,9 @@ public class TestesAmazon {
 	
 	@Test
 	public void MaisVendidos() {
+		util.setDir(root+"nadaqexiste");
 		home.clicarMaisVendidos();
+		util.screenshot();
 		String texto = vendas.getTextoDepartamento(5);
 		assertEquals("Brinquedos e Jogos", texto);	
 	}
@@ -87,14 +92,6 @@ public class TestesAmazon {
 	}
 	
 	
-	/*INHAÍ GURIZADA
-	 * 
-	 * COMOVAO.VOSES RSRSRS
-	 * 
-	 * OI SUMIDO
-	 */
-	
-	
 		
 	
 	
@@ -114,6 +111,7 @@ public class TestesAmazon {
 		vendas = new MaisVendidos(driver);
 		sa = new SoftAssert();
 		login = new LoginAmazon(driver);
+		util = new Utils(driver);
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http:\\www.amazon.com.br");
